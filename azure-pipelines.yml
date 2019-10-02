@@ -15,10 +15,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $ErrorActionPreference = "Stop"
       # Write your PowerShell commands here.
       Install-Module Pester -Force -Verbose
       Import-Module Pester -Force -Verbose
       Invoke-Pester test/nexus.Tests.ps1
+      if(-not $?) {
+        Exit 1
+      }
     failOnStderr: true
     pwsh: true
