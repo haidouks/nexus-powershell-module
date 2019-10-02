@@ -50,13 +50,3 @@ steps:
       }
     failOnStderr: true
     pwsh: true
-
-
-- task: PowerShell@2
-  displayName: 'Publish Module'
-  inputs:
-    targetType: 'inline'
-    script: |
-      Publish-Module -Name ./nexus.psd1 -NuGetApiKey $(nugetapikey) -Verbose -Force
-    failOnStderr: true
-    pwsh: true
