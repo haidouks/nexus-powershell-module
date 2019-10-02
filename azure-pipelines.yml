@@ -24,6 +24,6 @@ steps:
     script: |
       # Write your PowerShell commands here.
       
-      Write-Host "Hello World"
+      ls
     failOnStderr: true
     pwsh: true
