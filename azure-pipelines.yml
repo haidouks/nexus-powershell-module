@@ -55,5 +55,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'nexusModuleArtifacts'
+    ArtifactName: 'nexus-artifacts'
     publishLocation: 'Container'
