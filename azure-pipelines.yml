@@ -11,7 +11,7 @@ pool:
 
 steps:
 - task: PowerShell@2
-  displayName: 'Run Pester tests'
+  displayName: 'Pester Tests'
   inputs:
     targetType: 'inline'
     script: |
@@ -32,6 +32,20 @@ steps:
       write-host "Code coverage :  % $coverage"
       if($coverage -lt 30) {
           Write-Host "Code coverage should be minimum %40"
+          Exit 1
+      }
+    failOnStderr: true
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: 'Code Review'
+  inputs:
+    targetType: 'inline'
+    script: |
+      Install-Module PSScriptAnalyzer -Force
+      $codeReview = Invoke-ScriptAnalyzer -Path . -IncludeDefaultRules -RecurseCustomRulePath
+      write-output $codeReview
+      if(($codeReview |  Where-Object{$_.Severity -eq "Error"}).Count -gt 0) {
           Exit 1
       }
     failOnStderr: true
