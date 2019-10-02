@@ -17,7 +17,7 @@ steps:
     script: |
       Install-Module Pester -Force
       Import-Module Pester -Force
-      $result = Invoke-Pester -CodeCoverage ./ -Show None -PassThru
+      $result = Invoke-Pester -CodeCoverage ./nexus.psm1 -Show None -PassThru
       if($result.FailedCount -gt 0) {
         $result.TestResult | Where-Object {$_.Result -ne "Passed"}
         Exit 1
