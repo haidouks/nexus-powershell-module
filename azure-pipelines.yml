@@ -59,6 +59,6 @@ steps:
     script: |
       ls
       Import-Module ./nexus.psd1 -Force
-      Get-Module nexus | Publish-Module -NuGetApiKey $(nugetapikey)
+      Get-Module nexus -ListAvailable | Publish-Module -NuGetApiKey $(nugetapikey)
     failOnStderr: true
     pwsh: true
