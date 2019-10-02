@@ -1,1 +1,1 @@
-# nexus-powershell-module
+# nexus powershell module
