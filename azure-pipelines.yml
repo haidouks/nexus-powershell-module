@@ -15,12 +15,22 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      # Write your PowerShell commands here.
-      Install-Module Pester -Force -Verbose
-      Import-Module Pester -Force -Verbose
-      Invoke-Pester test/nexus.Tests.ps1
-      if(-not $?) {
+      $result = Invoke-Pester -CodeCoverage ./ -Show None -PassThru
+      if($result.FailedCount -gt 0) {
+        $result.TestResult | Where-Object {$_.Result -ne "Passed"}
         Exit 1
+      }
+      else {
+        write-output $result.TestResult
+      }
+      write-output "`n`n----------------Missed Commands----------------`n"
+      write-output $result.CodeCoverage.MissedCommands
+      write-output "`n----------------Missed Commands----------------`n`n`n"
+      $coverage = $(100*$($result.CodeCoverage.NumberOfCommandsExecuted)/$($result.CodeCoverage.NumberOfCommandsAnalyzed))
+      write-host "Code coverage :  % $coverage"
+      if($coverage -lt 40) {
+          Write-Host "Code coverage should be minimum %40"
+          Exit 1
       }
     failOnStderr: true
     pwsh: true
