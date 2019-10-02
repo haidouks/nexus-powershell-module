@@ -15,6 +15,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      $ErrorActionPreference = "Stop"
       # Write your PowerShell commands here.
       Install-Module Pester -Force -Verbose
       Import-Module Pester -Force -Verbose
