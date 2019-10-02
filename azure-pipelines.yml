@@ -30,7 +30,7 @@ steps:
       write-output "`n----------------Missed Commands----------------`n`n`n"
       $coverage = $(100*$($result.CodeCoverage.NumberOfCommandsExecuted)/$($result.CodeCoverage.NumberOfCommandsAnalyzed))
       write-host "Code coverage :  % $coverage"
-      if($coverage -lt 40) {
+      if($coverage -lt 30) {
           Write-Host "Code coverage should be minimum %40"
           Exit 1
       }
