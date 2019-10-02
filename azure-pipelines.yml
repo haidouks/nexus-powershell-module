@@ -19,11 +19,13 @@ steps:
   displayName: 'Run a multi-line script'
 
 - task: PowerShell@2
+  displayName: 'Run Pester tests'
   inputs:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      
-      ls
+      Install-Module Pester
+      Import-Module Pester
+      Invoke-Pester test/nexus.Tests.ps1
     failOnStderr: true
     pwsh: true
