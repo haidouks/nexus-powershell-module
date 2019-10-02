@@ -16,8 +16,8 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      Install-Module Pester
-      Import-Module Pester
+      Install-Module Pester -Force -Verbose
+      Import-Module Pester -Force -Verbose
       Invoke-Pester test/nexus.Tests.ps1
     failOnStderr: true
     pwsh: true
