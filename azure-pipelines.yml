@@ -57,6 +57,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Publish-Module -Name nexus -NuGetApiKey $(nugetapikey) -Path ./
+      Import-Module -Path nexus.psd1 -Force
+      Get-Module nexus | Publish-Module -NuGetApiKey $(nugetapikey)
     failOnStderr: true
     pwsh: true
