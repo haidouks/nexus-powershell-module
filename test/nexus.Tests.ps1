@@ -22,6 +22,12 @@ Set-NexusCredential -nexusBaseURI $nexusBaseURI -nexusCredential $nexusCred
 
 Describe "Get Nexus Repositories" {
     Context "If credential and nexus api url is valid" {
+        Mock Get-NexusRepositories {
+            $json = @"
+[{"name":"spring-proxy","format":"maven2","type":"proxy","url":"http://nexus3.tool.zfu.zb:8081/repository/spring-proxy"},{"name":"maven-proxy","format":"maven2","type":"proxy","url":"http://nexus3.tool.zfu.zb:8081/repository/maven-proxy"},{"name":"fed-group","format":"npm","type":"group","url":"http://nexus3.tool.zfu.zb:8081/repository/fed-group"}]
+"@            
+        return $json | convertfrom-json
+        }
         It "It should return all repositories" {
             {Get-NexusRepositories} | Should -Not -Throw
             (Get-NexusRepositories).type.Count | Should -BeGreaterThan 1
