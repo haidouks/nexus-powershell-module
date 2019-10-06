@@ -1,4 +1,4 @@
 [![Build Status](https://cnsn.visualstudio.com/powershell-modules/_apis/build/status/haidouks.nexus-powershell-module?branchName=master)](https://cnsn.visualstudio.com/powershell-modules/_build/latest?definitionId=2&branchName=master)
-[![Publish Status](https://cnsn.vsrm.visualstudio.com/_apis/public/Release/badge/932c2c54-2ee7-4a31-8e14-86601e988577/2/2)](https://cnsn.visualstudio.com/powershell-modules/_release?definitionId=2&_a=releases)
+[![Publish Status](https://vsrm.dev.azure.com/powershell-modules/_apis/public/Release/badge/3b086a5d-423c-4a8a-a567-7e2e7aa5b313/3/3)](https://vsrm.dev.azure.com/powershell-modules/_apis/public/Release/badge/3b086a5d-423c-4a8a-a567-7e2e7aa5b313/3/3)
 # Nexus PowerShell Module
 PowerShell module for Nexus3 repository operations
